@@ -101,7 +101,7 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 
 ==Changelog==
 
-= 1.0 - MM/DD/YYYY =
+= 1.0 - 07/27/2013 =
 * Initial Release
 
 == Upgrade Notice ==
