@@ -70,9 +70,6 @@ class StagTools {
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_menu_styles' ) );
 		add_action( 'admin_head', array( &$this, 'widget_styles' ) );
 
-		// Uninstall hook
-		register_uninstall_hook( __FILE__, 'stagtools_uninstall' );
-
 		// Include required files
 		$this->includes();
 
@@ -300,18 +297,3 @@ class StagTools {
 $GLOBALS['stagtools'] = new StagTools();
 
 }
-
-/**
- * Uninstallation function
- *
- * Delete saved options by plugin upon uninstallation.
- */
-function stagtools_uninstall() {
-	if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
-		exit ();
-	delete_option( 'stag_options' );
-	delete_option( 'stag_twitter_widget_tweets' );
-	delete_option( 'stag_twitter_widget_last_cache' );
-}
-
-?>
