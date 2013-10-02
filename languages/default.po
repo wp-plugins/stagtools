@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: StagTools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-11 17:37+0530\n"
-"PO-Revision-Date: 2013-09-11 17:37+0530\n"
+"POT-Creation-Date: 2013-10-01 10:31+0530\n"
+"PO-Revision-Date: 2013-10-01 10:32+0530\n"
 "Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
 "Language-Team:  <support@codestag.com>\n"
 "Language: en\n"
@@ -168,19 +168,19 @@ msgstr ""
 msgid "No Portfolios found in trash"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:36 ../cpt/cpt-portfolio.php:51
+#: ../cpt/cpt-portfolio.php:35 ../cpt/cpt-portfolio.php:50
 msgid "Skills"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:37
+#: ../cpt/cpt-portfolio.php:36
 msgid "Skill"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:50
+#: ../cpt/cpt-portfolio.php:49
 msgid "Portfolio Title"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:52 ../cpt/cpt-slides.php:38 ../cpt/cpt-team.php:39
+#: ../cpt/cpt-portfolio.php:51 ../cpt/cpt-slides.php:38 ../cpt/cpt-team.php:39
 #: ../cpt/cpt-testimonials.php:38
 msgid "Date"
 msgstr ""
@@ -917,7 +917,7 @@ msgstr ""
 msgid "Please check your dribbble username"
 msgstr ""
 
-#: ../widgets/widget-dribbble.php:84 ../widgets/widget-flickr.php:81
+#: ../widgets/widget-dribbble.php:84 ../widgets/widget-flickr.php:79
 #: ../widgets/widget-twitter.php:152
 msgid "Title:"
 msgstr ""
@@ -930,28 +930,28 @@ msgstr ""
 msgid "Number of shots to show:"
 msgstr ""
 
-#: ../widgets/widget-dribbble.php:100 ../widgets/widget-flickr.php:98
+#: ../widgets/widget-dribbble.php:100
 msgid "Open links in new window?"
 msgstr ""
 
 #: ../widgets/widget-flickr.php:8
-msgid "Display your latest Flickr shots"
+msgid "Display your latest Flickr photos"
 msgstr ""
 
 #: ../widgets/widget-flickr.php:10
 msgid "Stag Flickr Photos"
 msgstr ""
 
-#: ../widgets/widget-flickr.php:86
+#: ../widgets/widget-flickr.php:84
 msgid "Your Flickr User ID:"
 msgstr ""
 
-#: ../widgets/widget-flickr.php:88
+#: ../widgets/widget-flickr.php:86
 #, php-format
 msgid "Head over to %s to find your Flickr user ID."
 msgstr ""
 
-#: ../widgets/widget-flickr.php:92
+#: ../widgets/widget-flickr.php:90
 msgid "Number of photos to show:"
 msgstr ""
 
