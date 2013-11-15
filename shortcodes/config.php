@@ -1,5 +1,7 @@
 <?php
 
+global $stagtools;
+
 $stag_shortcodes['button'] = array(
 	'no_preview' => true,
 	'params' => array(
@@ -43,6 +45,21 @@ $stag_shortcodes['button'] = array(
 				'stroke' => __( 'stroke', 'stag' )
 			)
 		),
+		'icon' => array(
+			'std' => '',
+			'type' => 'icons',
+			'label' => __( 'Button Icon', 'stag' ),
+			'desc' => __( 'Choose an icon', 'stag' )
+		),
+		'icon_order' => array(
+			'type' => 'select',
+			'label' => __( 'Font Order', 'stag' ),
+			'desc' => __( 'Select if the icon should display before text or after text.', 'stag' ),
+			'options' => array(
+				'before' => __( 'Before Text', 'stag' ),
+				'after' => __( 'After Text', 'stag' )
+			)
+		),
 		'target' => array(
 			'type' => 'select',
 			'label' => __( 'Button Target', 'stag' ),
@@ -59,7 +76,7 @@ $stag_shortcodes['button'] = array(
 			'desc' => __( 'Add the button\'s text', 'stag' ),
 		)
 	),
-	'shortcode' => '[stag_button url="{{url}}" style="{{style}}" size="{{size}}" type="{{type}}" target="{{target}}"]{{content}}[/stag_button]',
+	'shortcode' => '[stag_button url="{{url}}" style="{{style}}" size="{{size}}" type="{{type}}" target="{{target}}" icon="{{icon}}" icon_order="{{icon_order}}"]{{content}}[/stag_button]',
 	'popup_title' => __('Insert Button Shortcode', 'stag')
 );
 
@@ -381,9 +398,47 @@ $stag_shortcodes['map'] = array(
 			'std' => '',
 			'type' => 'text',
 			'label' => __( 'Enter URL', 'stag' ),
-			'desc' => __( 'Enter Google Map URL', '' )
+			'desc' => __( 'Enter Google Map URL', 'stag' )
 		)
 	),
 	'shortcode' => '[stag_map url="{{url}}"]',
 	'popup_title' => __( 'Insert Google Map Shortcode', 'stag' )
 );
+
+/**
+ * Process only if the plugin Stag Custom Sidebar is active
+ *
+ * @since 1.1
+ * @link http://wordpress.org/plugins/stag-custom-sidebars
+ */
+if ( $stagtools->is_scs_active() ) {
+	$option = get_option('stag_custom_sidebars');
+
+	$sidebars = array();
+
+	if ( $option ) : // if there is more than one sidebar
+	foreach ( $option as $key => $val ) {
+		$sidebars[sanitize_html_class( sanitize_title_with_dashes( $val ) )] = $val;
+	}
+	endif;
+
+	$stag_shortcodes['widget_area'] = array(
+		'no_preview' => true,
+		'params' => array(
+			'id' => array(
+				'type'    => 'select',
+				'label'   => __( 'Choose Widget Area', 'stag' ),
+				'desc'    => __( 'Choose which sidebar area you want to display.', 'stag' ),
+				'options' => $sidebars
+			),
+			'class' => array(
+				'std'   => '',
+				'type'  => 'text',
+				'label' => __( 'Class', 'stag' ),
+				'desc'  => __( 'Enter Class name, if you want to use one on frontend.', 'stag' )
+			)
+		),
+		'shortcode' => '[stag_sidebar id="{{id}}" class="{{class}}"]',
+		'popup_title' => __( 'Insert Google Map Shortcode', 'stag' )
+	);
+}
