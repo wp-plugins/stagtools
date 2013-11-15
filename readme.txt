@@ -1,11 +1,11 @@
-===StagTools===
+=== StagTools ===
 
 Contributors: mauryaratan
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ratan.maurya@gmail.com&item_name=Donation+for+StagTools
-Tags: widgets, icons, retina, codestag, shortcodes, themeforest, font-icons
+Donate link: http://codest.ag/st-donate
+Tags: widgets, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebars, codestag, mauryaratan
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 1.0.8
+Tested up to: 3.8
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,8 @@ StagTools powers your WordPress website with some regularly needed shortcodes in
 = Get Involved =
 If you are a developer, you can contribute to the source code on [StagTools Github Repository](https://github.com/mauryaratan/stagtools)
 
+*Checkout our finely tuned WordPress themes over at [Codestag](http://codestag.com).*
+
 == Frequently Asked Questions ==
 
 = What is this plugin and why do I need it? =
@@ -39,7 +41,7 @@ Yes; although we have a shortcode builder you can also see a list of [all availa
 The StagTools was developed to work with any WordPress theme as it includes default styling. However, we provide our extra bit of styling to all of our [themes](http://codestag.com) at Codestag.
 
 = Why shortcodes are prefixed with stag_ ? =
-Simply to avoid any conflict with other shortcodes on your site enabled via any plugin or theme.
+Simply to avoid any conflict with other shortcodes on your site enabled via any third-party plugin or theme.
 
 = I love this plugin! Can I contribute? =
 Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagtools/) :)
@@ -76,6 +78,19 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 5. Navigate to Settings &rarr; StagTools to learn about the plugin's features. The widgets will be available in Appearance &rarr; Widgets.
 
 ==Changelog==
+
+= 1.1 - 11/15/2013 =
+* New - Compatibility with FontAwesome 4
+* New - Insert font icons in buttons
+* New - Insert font icons in buttons
+* New - Settings for changing slugs for custom post type ‘portfolio’ and taxonomy ‘skill’
+* New - Contextual help screen on settings page
+* Fix - Properly resize shortcode modal window width
+* Fix - Image/Video Media frame title
+* Fix - Check if there are no sidebar created via Stag Custom Sidebars
+* Improve - Compatibility with the plugin [Stag Custom Sidebars][http://wordpress.org/plugins/stag-custom-sidebars/]
+* Improve - Refractored code
+* Improve - Inline plugin documentation
 
 = 1.0.8 - 10/02/2013 =
 * Fix - Twitter widget incorrect links

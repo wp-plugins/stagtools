@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: StagTools\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-01 10:31+0530\n"
-"PO-Revision-Date: 2013-10-01 10:32+0530\n"
+"POT-Creation-Date: 2013-11-15 20:51+0530\n"
+"PO-Revision-Date: 2013-11-15 20:51+0530\n"
 "Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
 "Language-Team:  <support@codestag.com>\n"
 "Language: en\n"
@@ -20,59 +20,122 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../stagtools.php:205
+#: ../stagtools.php:263
 msgid "StagTools"
 msgstr ""
 
-#: ../stagtools.php:214
+#: ../stagtools.php:273
+msgid "Twitter Settings"
+msgstr ""
+
+#: ../stagtools.php:277
 msgid "OAuth Consumer Key"
 msgstr ""
 
-#: ../stagtools.php:221
+#: ../stagtools.php:284
 msgid "OAuth Consumer Secret"
 msgstr ""
 
-#: ../stagtools.php:228
+#: ../stagtools.php:291
 msgid "OAuth Access Token"
 msgstr ""
 
-#: ../stagtools.php:235
+#: ../stagtools.php:298
 msgid "OAuth Access Secret"
 msgstr ""
 
-#: ../stagtools.php:248
-msgid "FAQ"
+#: ../stagtools.php:305 ../stagtools.php:414
+msgid "Portfolio Settings"
 msgstr ""
 
-#: ../stagtools.php:249
-msgid "Few resources to help you getting started."
+#: ../stagtools.php:309
+msgid "Portfolio Slug"
 msgstr ""
 
-#: ../stagtools.php:252
+#: ../stagtools.php:317
+msgid "Skills Slug"
+msgstr ""
+
+#: ../stagtools.php:391
+msgid "For more information:"
+msgstr ""
+
+#: ../stagtools.php:392
+#, php-format
+msgid ""
+"Visit the <a href=\"%s\" target=\"_blank\">documentation</a> on the Github."
+msgstr ""
+
+#: ../stagtools.php:394
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Post an issue</a> on <a href=\"%s\" target="
+"\"_blank\">GitHub</a>."
+msgstr ""
+
+#: ../stagtools.php:402
+msgid "Twitter oAuth Settings"
+msgstr ""
+
+#: ../stagtools.php:403
+msgid ""
+"Here you can find how to add twitter oAuth keys to get Twitter widget "
+"working."
+msgstr ""
+
+#: ../stagtools.php:404
 msgid "Where do I find these keys?"
 msgstr ""
 
-#: ../stagtools.php:253 ../stagtools.php:258
+#: ../stagtools.php:405
 #, php-format
 msgid ""
 "In order to use the new Twitter widget, you must first register a Twitter "
-"app, which will provide you with the keys you see above. Start by %s to the "
-"Twitter developer dashboard."
+"app, which will provide you with the keys you see above. Start by <a href="
+"\"%s\" target=\"_blank\">signing-in</a> to the Twitter developer dashboard."
 msgstr ""
 
-#: ../stagtools.php:257
+#: ../stagtools.php:406
 msgid "Where are my widgets?"
 msgstr ""
 
-#: ../stagtools.php:262
+#: ../stagtools.php:407
+#, php-format
+msgid ""
+"In order to use the new Twitter widget, you must first register a Twitter "
+"app, which will provide you with the keys you see above. Start by <a href="
+"\"%s\" target=\"_blank\">creating a new application</a> to the Twitter "
+"developer dashboard."
+msgstr ""
+
+#: ../stagtools.php:408
 msgid "Can I insert shortcodes manually instead of using shortcode generator?"
 msgstr ""
 
-#: ../stagtools.php:263
+#: ../stagtools.php:409
 #, php-format
 msgid ""
-"Yes; although we have a shortcode builder you can also see a list of %s and "
-"use it manually in any supported area."
+"Yes; although we have a shortcode builder you can also see a list of <a href="
+"\"%s\" target=\"_blank\">all available shortcodes</a> and use it manually in "
+"any supported area."
+msgstr ""
+
+#: ../stagtools.php:415
+msgid ""
+"You can use the following settigns to control the slug/taxonomies for custom "
+"post type portfolio and skills."
+msgstr ""
+
+#: ../stagtools.php:416
+msgid ""
+"<strong>Portfolio Slug</strong> - This settings is used to set the slug of "
+"custom post type &lsquo;portfolio&rsquo;."
+msgstr ""
+
+#: ../stagtools.php:417
+msgid ""
+"<strong>Skills Slug</strong> - This settings is used to set the slug of "
+"custom post taxonomy &lsquo;skill&rsquo;."
 msgstr ""
 
 #: ../assets/js/plugin-lang.php:5
@@ -95,7 +158,7 @@ msgstr ""
 msgid "Divider / Horizontal Ruler"
 msgstr ""
 
-#: ../assets/js/plugin-lang.php:10 ../shortcodes/config.php:207
+#: ../assets/js/plugin-lang.php:10 ../shortcodes/config.php:224
 msgid "Intro Text"
 msgstr ""
 
@@ -119,15 +182,19 @@ msgstr ""
 msgid "Media Elements"
 msgstr ""
 
-#: ../assets/js/plugin-lang.php:17 ../shortcodes/config.php:286
+#: ../assets/js/plugin-lang.php:17
+msgid "Widget Area"
+msgstr ""
+
+#: ../assets/js/plugin-lang.php:18 ../shortcodes/config.php:303
 msgid "Image"
 msgstr ""
 
-#: ../assets/js/plugin-lang.php:18
+#: ../assets/js/plugin-lang.php:19
 msgid "Video"
 msgstr ""
 
-#: ../assets/js/plugin-lang.php:19
+#: ../assets/js/plugin-lang.php:20
 msgid "Google Map"
 msgstr ""
 
@@ -168,19 +235,19 @@ msgstr ""
 msgid "No Portfolios found in trash"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:35 ../cpt/cpt-portfolio.php:50
+#: ../cpt/cpt-portfolio.php:36 ../cpt/cpt-portfolio.php:51
 msgid "Skills"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:36
+#: ../cpt/cpt-portfolio.php:37
 msgid "Skill"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:49
+#: ../cpt/cpt-portfolio.php:50
 msgid "Portfolio Title"
 msgstr ""
 
-#: ../cpt/cpt-portfolio.php:51 ../cpt/cpt-slides.php:38 ../cpt/cpt-team.php:39
+#: ../cpt/cpt-portfolio.php:52 ../cpt/cpt-slides.php:38 ../cpt/cpt-team.php:39
 #: ../cpt/cpt-testimonials.php:38
 msgid "Date"
 msgstr ""
@@ -305,567 +372,611 @@ msgstr ""
 msgid "Testimonial Title"
 msgstr ""
 
-#: ../shortcodes/config.php:9
+#: ../shortcodes/config.php:11
 msgid "Button URL"
 msgstr ""
 
-#: ../shortcodes/config.php:10
+#: ../shortcodes/config.php:12
 msgid "Add the button's url e.g. http://example.com"
 msgstr ""
 
-#: ../shortcodes/config.php:14
+#: ../shortcodes/config.php:16
 msgid "Button Style"
 msgstr ""
 
-#: ../shortcodes/config.php:15
+#: ../shortcodes/config.php:17
 msgid "Select the button's style, ie the button's colour"
 msgstr ""
 
-#: ../shortcodes/config.php:17 ../shortcodes/config.php:76
+#: ../shortcodes/config.php:19 ../shortcodes/config.php:93
 msgid "Grey"
 msgstr ""
 
-#: ../shortcodes/config.php:18
+#: ../shortcodes/config.php:20
 msgid "Black"
 msgstr ""
 
-#: ../shortcodes/config.php:19 ../shortcodes/config.php:79
+#: ../shortcodes/config.php:21 ../shortcodes/config.php:96
 msgid "Green"
 msgstr ""
 
-#: ../shortcodes/config.php:20
+#: ../shortcodes/config.php:22
 msgid "Light Blue"
 msgstr ""
 
-#: ../shortcodes/config.php:21 ../shortcodes/config.php:80
+#: ../shortcodes/config.php:23 ../shortcodes/config.php:97
 msgid "Blue"
 msgstr ""
 
-#: ../shortcodes/config.php:22 ../shortcodes/config.php:77
+#: ../shortcodes/config.php:24 ../shortcodes/config.php:94
 msgid "Red"
 msgstr ""
 
-#: ../shortcodes/config.php:23
+#: ../shortcodes/config.php:25
 msgid "Orange"
 msgstr ""
 
-#: ../shortcodes/config.php:24
+#: ../shortcodes/config.php:26
 msgid "Purple"
 msgstr ""
 
-#: ../shortcodes/config.php:29
+#: ../shortcodes/config.php:31
 msgid "Button Size"
 msgstr ""
 
-#: ../shortcodes/config.php:30
+#: ../shortcodes/config.php:32
 msgid "Select the button's size"
 msgstr ""
 
-#: ../shortcodes/config.php:32
+#: ../shortcodes/config.php:34
 msgid "Small"
 msgstr ""
 
-#: ../shortcodes/config.php:33
+#: ../shortcodes/config.php:35
 msgid "Medium"
 msgstr ""
 
-#: ../shortcodes/config.php:34
+#: ../shortcodes/config.php:36
 msgid "Large"
 msgstr ""
 
-#: ../shortcodes/config.php:39
+#: ../shortcodes/config.php:41
 msgid "Button Type"
 msgstr ""
 
-#: ../shortcodes/config.php:40
+#: ../shortcodes/config.php:42
 msgid "Select the button's type"
 msgstr ""
 
-#: ../shortcodes/config.php:42 ../shortcodes/config.php:102
-#: ../shortcodes/config.php:223 ../shortcodes/config.php:259
+#: ../shortcodes/config.php:44 ../shortcodes/config.php:119
+#: ../shortcodes/config.php:240 ../shortcodes/config.php:276
 msgid "Normal"
 msgstr ""
 
-#: ../shortcodes/config.php:43
+#: ../shortcodes/config.php:45
 msgid "stroke"
 msgstr ""
 
-#: ../shortcodes/config.php:48
-msgid "Button Target"
-msgstr ""
-
-#: ../shortcodes/config.php:49
-msgid "_self = open in same window. _blank = open in new window"
-msgstr ""
-
 #: ../shortcodes/config.php:51
-msgid "_self"
+msgid "Button Icon"
 msgstr ""
 
-#: ../shortcodes/config.php:52
-msgid "_blank"
+#: ../shortcodes/config.php:52 ../shortcodes/config.php:366
+msgid "Choose an icon"
 msgstr ""
 
-#: ../shortcodes/config.php:58
-msgid "Button's Text"
+#: ../shortcodes/config.php:56
+msgid "Font Order"
+msgstr ""
+
+#: ../shortcodes/config.php:57
+msgid "Select if the icon should display before text or after text."
 msgstr ""
 
 #: ../shortcodes/config.php:59
-msgid "Add the button's text"
+msgid "Before Text"
 msgstr ""
 
-#: ../shortcodes/config.php:63
-msgid "Insert Button Shortcode"
+#: ../shortcodes/config.php:60
+msgid "After Text"
 msgstr ""
 
-#: ../shortcodes/config.php:72
-msgid "Alert Style"
+#: ../shortcodes/config.php:65
+msgid "Button Target"
 msgstr ""
 
-#: ../shortcodes/config.php:73
-msgid "Select the alert's style, ie the alert colour"
+#: ../shortcodes/config.php:66
+msgid "_self = open in same window. _blank = open in new window"
+msgstr ""
+
+#: ../shortcodes/config.php:68
+msgid "_self"
+msgstr ""
+
+#: ../shortcodes/config.php:69
+msgid "_blank"
 msgstr ""
 
 #: ../shortcodes/config.php:75
+msgid "Button's Text"
+msgstr ""
+
+#: ../shortcodes/config.php:76
+msgid "Add the button's text"
+msgstr ""
+
+#: ../shortcodes/config.php:80
+msgid "Insert Button Shortcode"
+msgstr ""
+
+#: ../shortcodes/config.php:89
+msgid "Alert Style"
+msgstr ""
+
+#: ../shortcodes/config.php:90
+msgid "Select the alert's style, ie the alert colour"
+msgstr ""
+
+#: ../shortcodes/config.php:92
 msgid "White"
 msgstr ""
 
-#: ../shortcodes/config.php:78
+#: ../shortcodes/config.php:95
 msgid "Yellow"
 msgstr ""
 
-#: ../shortcodes/config.php:86
+#: ../shortcodes/config.php:103
 msgid "Alert Text"
 msgstr ""
 
-#: ../shortcodes/config.php:87
+#: ../shortcodes/config.php:104
 msgid "Add the alert's text"
 msgstr ""
 
-#: ../shortcodes/config.php:91
+#: ../shortcodes/config.php:108
 msgid "Insert Alert Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:99
+#: ../shortcodes/config.php:116
 msgid "Toggle Style"
 msgstr ""
 
-#: ../shortcodes/config.php:100
+#: ../shortcodes/config.php:117
 msgid "Select the toggle's style"
 msgstr ""
 
-#: ../shortcodes/config.php:103 ../shortcodes/config.php:224
+#: ../shortcodes/config.php:120 ../shortcodes/config.php:241
 msgid "Stroke"
 msgstr ""
 
-#: ../shortcodes/config.php:108
+#: ../shortcodes/config.php:125
 msgid "Toggle Content Title"
 msgstr ""
 
-#: ../shortcodes/config.php:109
+#: ../shortcodes/config.php:126
 msgid "Add the title that will go above the toggle content"
 msgstr ""
 
-#: ../shortcodes/config.php:115
+#: ../shortcodes/config.php:132
 msgid "Toggle Content"
 msgstr ""
 
-#: ../shortcodes/config.php:116
+#: ../shortcodes/config.php:133
 msgid "Add the toggle content. Will accept HTML"
 msgstr ""
 
-#: ../shortcodes/config.php:120
+#: ../shortcodes/config.php:137
 msgid "Toggle State"
 msgstr ""
 
-#: ../shortcodes/config.php:121
+#: ../shortcodes/config.php:138
 msgid "Select the state of the toggle on page load"
 msgstr ""
 
-#: ../shortcodes/config.php:123
+#: ../shortcodes/config.php:140
 msgid "Open"
 msgstr ""
 
-#: ../shortcodes/config.php:124
+#: ../shortcodes/config.php:141
 msgid "Closed"
 msgstr ""
 
-#: ../shortcodes/config.php:129
+#: ../shortcodes/config.php:146
 msgid "Insert Toggle Content Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:135
+#: ../shortcodes/config.php:152
 msgid "Insert Columns Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:143
+#: ../shortcodes/config.php:160
 msgid "Column Type"
 msgstr ""
 
-#: ../shortcodes/config.php:144
+#: ../shortcodes/config.php:161
 msgid "Select the type, ie width of the column."
 msgstr ""
 
-#: ../shortcodes/config.php:146
+#: ../shortcodes/config.php:163
 msgid "One Third"
 msgstr ""
 
-#: ../shortcodes/config.php:147
+#: ../shortcodes/config.php:164
 msgid "One Third Last"
 msgstr ""
 
-#: ../shortcodes/config.php:148
+#: ../shortcodes/config.php:165
 msgid "Two Thirds"
 msgstr ""
 
-#: ../shortcodes/config.php:149
+#: ../shortcodes/config.php:166
 msgid "Two Thirds Last"
 msgstr ""
 
-#: ../shortcodes/config.php:150
+#: ../shortcodes/config.php:167
 msgid "One Half"
 msgstr ""
 
-#: ../shortcodes/config.php:151
+#: ../shortcodes/config.php:168
 msgid "One Half Last"
 msgstr ""
 
-#: ../shortcodes/config.php:152
+#: ../shortcodes/config.php:169
 msgid "One Fourth"
 msgstr ""
 
-#: ../shortcodes/config.php:153
+#: ../shortcodes/config.php:170
 msgid "One Fourth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:154
+#: ../shortcodes/config.php:171
 msgid "Three Fourth"
 msgstr ""
 
-#: ../shortcodes/config.php:155
+#: ../shortcodes/config.php:172
 msgid "Three Fourth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:156
+#: ../shortcodes/config.php:173
 msgid "One Fifth"
 msgstr ""
 
-#: ../shortcodes/config.php:157
+#: ../shortcodes/config.php:174
 msgid "One Fifth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:158
+#: ../shortcodes/config.php:175
 msgid "Two Fifth"
 msgstr ""
 
-#: ../shortcodes/config.php:159
+#: ../shortcodes/config.php:176
 msgid "Two Fifth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:160
+#: ../shortcodes/config.php:177
 msgid "Three Fifth"
 msgstr ""
 
-#: ../shortcodes/config.php:161
+#: ../shortcodes/config.php:178
 msgid "Three Fifth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:162
+#: ../shortcodes/config.php:179
 msgid "Four Fifth"
 msgstr ""
 
-#: ../shortcodes/config.php:163
+#: ../shortcodes/config.php:180
 msgid "Four Fifth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:164
+#: ../shortcodes/config.php:181
 msgid "One Sixth"
 msgstr ""
 
-#: ../shortcodes/config.php:165
+#: ../shortcodes/config.php:182
 msgid "One Sixth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:166
+#: ../shortcodes/config.php:183
 msgid "Five Sixth"
 msgstr ""
 
-#: ../shortcodes/config.php:167
+#: ../shortcodes/config.php:184
 msgid "Five Sixth Last"
 msgstr ""
 
-#: ../shortcodes/config.php:173
+#: ../shortcodes/config.php:190
 msgid "Column Content"
 msgstr ""
 
-#: ../shortcodes/config.php:174
+#: ../shortcodes/config.php:191
 msgid "Add the column content."
 msgstr ""
 
-#: ../shortcodes/config.php:178
+#: ../shortcodes/config.php:195
 msgid "Add Column"
 msgstr ""
 
-#: ../shortcodes/config.php:187
+#: ../shortcodes/config.php:204
 msgid "Divider"
 msgstr ""
 
-#: ../shortcodes/config.php:188
+#: ../shortcodes/config.php:205
 msgid "Select the style of the Divider"
 msgstr ""
 
-#: ../shortcodes/config.php:190
+#: ../shortcodes/config.php:207
 msgid "Plain"
 msgstr ""
 
-#: ../shortcodes/config.php:191
+#: ../shortcodes/config.php:208
 msgid "Strong"
 msgstr ""
 
-#: ../shortcodes/config.php:192
+#: ../shortcodes/config.php:209
 msgid "Double"
 msgstr ""
 
-#: ../shortcodes/config.php:193
+#: ../shortcodes/config.php:210
 msgid "Dashed"
 msgstr ""
 
-#: ../shortcodes/config.php:194
+#: ../shortcodes/config.php:211
 msgid "Dotted"
 msgstr ""
 
-#: ../shortcodes/config.php:199
+#: ../shortcodes/config.php:216
 msgid "Insert Divider"
 msgstr ""
 
-#: ../shortcodes/config.php:208
+#: ../shortcodes/config.php:225
 msgid "Enter the intro text."
 msgstr ""
 
-#: ../shortcodes/config.php:213
+#: ../shortcodes/config.php:230
 msgid "Insert Author Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:220
+#: ../shortcodes/config.php:237
 msgid "Tabs Style"
 msgstr ""
 
-#: ../shortcodes/config.php:221
+#: ../shortcodes/config.php:238
 msgid "Select the tabs's style"
 msgstr ""
 
-#: ../shortcodes/config.php:230
+#: ../shortcodes/config.php:247
 msgid "Insert Tab Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:236
+#: ../shortcodes/config.php:253
 msgid "Tab Title"
 msgstr ""
 
-#: ../shortcodes/config.php:237
+#: ../shortcodes/config.php:254
 msgid "Title of the tab"
 msgstr ""
 
-#: ../shortcodes/config.php:242
+#: ../shortcodes/config.php:259
 msgid "Tab Content"
 msgstr ""
 
-#: ../shortcodes/config.php:243
+#: ../shortcodes/config.php:260
 msgid "Add the tabs content"
 msgstr ""
 
-#: ../shortcodes/config.php:247
+#: ../shortcodes/config.php:264
 msgid "Add Tab"
 msgstr ""
 
-#: ../shortcodes/config.php:256
+#: ../shortcodes/config.php:273
 msgid "Dropcap Style"
 msgstr ""
 
-#: ../shortcodes/config.php:257
+#: ../shortcodes/config.php:274
 msgid "Select the dropcap's style"
 msgstr ""
 
-#: ../shortcodes/config.php:260
+#: ../shortcodes/config.php:277
 msgid "Squared"
 msgstr ""
 
-#: ../shortcodes/config.php:266
+#: ../shortcodes/config.php:283
 msgid "Dropcap Text"
 msgstr ""
 
-#: ../shortcodes/config.php:267
+#: ../shortcodes/config.php:284
 msgid "Enter the dropcap's text"
 msgstr ""
 
-#: ../shortcodes/config.php:272 ../shortcodes/config.php:369
+#: ../shortcodes/config.php:289 ../shortcodes/config.php:386
 msgid "Font Size"
 msgstr ""
 
-#: ../shortcodes/config.php:273
+#: ../shortcodes/config.php:290
 msgid "Enter the font's size in px, em or %"
 msgstr ""
 
-#: ../shortcodes/config.php:277
+#: ../shortcodes/config.php:294
 msgid "Insert Dropcap Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:287
+#: ../shortcodes/config.php:304
 msgid "Choose your image"
 msgstr ""
 
-#: ../shortcodes/config.php:291
+#: ../shortcodes/config.php:308
 msgid "Image Filter"
 msgstr ""
 
-#: ../shortcodes/config.php:292
+#: ../shortcodes/config.php:309
 msgid "Select the CSS3 image filter style"
 msgstr ""
 
-#: ../shortcodes/config.php:294
+#: ../shortcodes/config.php:311
 msgid "No Filter"
 msgstr ""
 
-#: ../shortcodes/config.php:295
+#: ../shortcodes/config.php:312
 msgid "Grayscale"
 msgstr ""
 
-#: ../shortcodes/config.php:296
+#: ../shortcodes/config.php:313
 msgid "Sepia"
 msgstr ""
 
-#: ../shortcodes/config.php:297
+#: ../shortcodes/config.php:314
 msgid "Blur"
 msgstr ""
 
-#: ../shortcodes/config.php:298
+#: ../shortcodes/config.php:315
 msgid "Hue Rotate"
 msgstr ""
 
-#: ../shortcodes/config.php:299
+#: ../shortcodes/config.php:316
 msgid "Contrast"
 msgstr ""
 
-#: ../shortcodes/config.php:300
+#: ../shortcodes/config.php:317
 msgid "Brightness"
 msgstr ""
 
-#: ../shortcodes/config.php:301
+#: ../shortcodes/config.php:318
 msgid "Invert"
 msgstr ""
 
-#: ../shortcodes/config.php:306
+#: ../shortcodes/config.php:323
 msgid "Alignment"
 msgstr ""
 
-#: ../shortcodes/config.php:307
+#: ../shortcodes/config.php:324
 msgid "Choose Image Alignment"
 msgstr ""
 
-#: ../shortcodes/config.php:309
+#: ../shortcodes/config.php:326
 msgid "None"
 msgstr ""
 
-#: ../shortcodes/config.php:310
+#: ../shortcodes/config.php:327
 msgid "Left"
 msgstr ""
 
-#: ../shortcodes/config.php:311
+#: ../shortcodes/config.php:328
 msgid "Center"
 msgstr ""
 
-#: ../shortcodes/config.php:312
+#: ../shortcodes/config.php:329
 msgid "Right"
 msgstr ""
 
-#: ../shortcodes/config.php:318 ../shortcodes/config.php:354
+#: ../shortcodes/config.php:335 ../shortcodes/config.php:371
 msgid "URL"
 msgstr ""
 
-#: ../shortcodes/config.php:319
+#: ../shortcodes/config.php:336
 msgid "Enter the URL where image should be linked (optional)"
 msgstr ""
 
-#: ../shortcodes/config.php:323
+#: ../shortcodes/config.php:340
 msgid "Insert Image Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:333 ../shortcodes/shortcode-class.php:122
+#: ../shortcodes/config.php:350 ../shortcodes/shortcode-class.php:123
 msgid "Choose Video"
 msgstr ""
 
-#: ../shortcodes/config.php:334
+#: ../shortcodes/config.php:351
 msgid ""
 "Either upload a new video, choose an existing video from your media library "
 "or link to a video by URL. <br><br>"
 msgstr ""
 
-#: ../shortcodes/config.php:335
+#: ../shortcodes/config.php:352
 #, php-format
 msgid "A list of all shortcode video services can be found on %s.<br>"
 msgstr ""
 
-#: ../shortcodes/config.php:339
+#: ../shortcodes/config.php:356
 msgid "Insert Video Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:348
+#: ../shortcodes/config.php:365
 msgid "Icon"
 msgstr ""
 
-#: ../shortcodes/config.php:349
-msgid "Choose an icon"
-msgstr ""
-
-#: ../shortcodes/config.php:355
+#: ../shortcodes/config.php:372
 msgid "Enter the URL where icon should be linked (optional)"
 msgstr ""
 
-#: ../shortcodes/config.php:359
+#: ../shortcodes/config.php:376
 msgid "Open in new window"
 msgstr ""
 
-#: ../shortcodes/config.php:360
+#: ../shortcodes/config.php:377
 msgid "Do you want to open the link in a new window?"
 msgstr ""
 
-#: ../shortcodes/config.php:362
+#: ../shortcodes/config.php:379
 msgid "No"
 msgstr ""
 
-#: ../shortcodes/config.php:363
+#: ../shortcodes/config.php:380
 msgid "Yes"
 msgstr ""
 
-#: ../shortcodes/config.php:370
+#: ../shortcodes/config.php:387
 msgid "Enter the icon's font size in px, em or %"
 msgstr ""
 
-#: ../shortcodes/config.php:374
+#: ../shortcodes/config.php:391
 msgid "Insert Icon Shortcode"
 msgstr ""
 
-#: ../shortcodes/config.php:383
+#: ../shortcodes/config.php:400
 msgid "Enter URL"
 msgstr ""
 
-#: ../shortcodes/config.php:384
+#: ../shortcodes/config.php:401
 msgid "Enter Google Map URL"
 msgstr ""
 
-#: ../shortcodes/config.php:388
+#: ../shortcodes/config.php:405 ../shortcodes/config.php:442
 msgid "Insert Google Map Shortcode"
+msgstr ""
+
+#: ../shortcodes/config.php:430
+msgid "Choose Widget Area"
+msgstr ""
+
+#: ../shortcodes/config.php:431
+msgid "Choose which sidebar area you want to display."
+msgstr ""
+
+#: ../shortcodes/config.php:437
+msgid "Class"
+msgstr ""
+
+#: ../shortcodes/config.php:438
+msgid "Enter Class name, if you want to use one on frontend."
 msgstr ""
 
 #: ../shortcodes/shortcode-class.php:24
 msgid "Config file does not exist"
 msgstr ""
 
-#: ../shortcodes/shortcode-class.php:114
+#: ../shortcodes/shortcode-class.php:115
 msgid "Choose Image"
 msgstr ""
 
-#: ../shortcodes/stag-shortcodes.php:86
+#: ../shortcodes/stag-shortcodes.php:28
+msgid "Upload or Choose Your Custom Video File"
+msgstr ""
+
+#: ../shortcodes/stag-shortcodes.php:29
+msgid "Upload or Choose Your Custom Image File"
+msgstr ""
+
+#: ../shortcodes/stag-shortcodes.php:95
 msgid "Insert Shortcode"
 msgstr ""
 
