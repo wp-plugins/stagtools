@@ -3,7 +3,7 @@
  * Plugin Name: StagTools
  * Plugin URI: http://wordpress.org/plugins/stagtools/
  * Description: A poweful plugin to extend functionality to your WordPress themes offering shortcodes, font icons and useful widgets.
- * Version: 1.1
+ * Version: 1.2
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
  * License: GPL2
@@ -22,7 +22,7 @@ if ( ! class_exists( 'StagTools' ) ) {
  * Main StagTools Class
  *
  * @package StagTools
- * @version 1.1
+ * @version 1.2
  * @author Ram Ratan Maurya (Codestag)
  * @link http://mauryaratan.me
  * @link http://codestag.com
@@ -33,7 +33,7 @@ class StagTools {
 	/**
 	* @var string
 	*/
-	public $version = '1.1';
+	public $version = '1.2';
 	
 	/**
 	* @var string
@@ -57,26 +57,21 @@ class StagTools {
 	 * @return void
 	 */
 	public function __construct() {
-
 		// Define version constant
 		define( 'STAGTOOLS_VERSION', $this->version );
 
 		// Hooks
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 		add_action( 'init', array( &$this, 'init' ) );
-		add_action( 'admin_init', array( &$this, 'admin_init' ) );
 		add_action( 'admin_menu', array( &$this, 'stag_add_options_page' ) );
 		add_action( 'admin_head', array( &$this, 'widget_styles' ) );
 
 		// Include required files
 		$this->includes();
-
 	}
 
 	/**
-	 * action_links function.
-	 *
-	 * Adds custom links on plugins page.
+	 * Add custom links on plugins page.
 	 *
 	 * @access public
 	 * @param mixed $links
@@ -103,29 +98,25 @@ class StagTools {
 
 		add_filter( 'contextual_help', array( &$this, 'contextual_help' ), 10, 3 );
 
-		if( current_theme_supports( 'stag-portfolio' ) ) 	include_once( 'cpt/cpt-portfolio.php' );
-		if( current_theme_supports( 'stag-slides' ) ) 		include_once( 'cpt/cpt-slides.php' );
-		if( current_theme_supports( 'stag-team' ) ) 		include_once( 'cpt/cpt-team.php' );
-		if( current_theme_supports( 'stag-testimonials' ) ) include_once( 'cpt/cpt-testimonials.php' );
-	}
-
-	/**
-	 * Register settings for admin options.
-	 * 
-	 * @return void
-	 */
-	function admin_init() {
-		register_setting( 'stag_plugin_options', 'stag_options', array($this, 'stag_validate_options') );
-
 		/**
-		 * Flush rewrite rules on settings change.
-		 *
-		 * It's the best way to flush rewrite rules when there is a change in 'portfolio' or 'skills' slug.
-		 * 
-		 * @since 1.1
+		 * @deprecated 1.2
 		 */
-		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == "true" ) {
-			flush_rewrite_rules();
+		if( current_theme_supports( 'stag-portfolio' ) ) 	include_once( 'post-type/portfolio.php' );
+		if( current_theme_supports( 'stag-slides' ) ) 		include_once( 'post-type/slides.php' );
+		if( current_theme_supports( 'stag-team' ) ) 		include_once( 'post-type/team.php' );
+		if( current_theme_supports( 'stag-testimonials' ) ) include_once( 'post-type/testimonials.php' );
+		
+		/**
+		 * Include custom post type files, depending on which are supported.
+		 * 
+		 * @since 1.2
+		 */
+		if ( current_theme_supports( 'post-type' ) ) {
+			$theme_supports = get_theme_support( 'post-type' );
+
+			foreach ( $theme_supports[0] as $support ) {
+				include_once( "post-type/{$support}.php" );
+			}
 		}
 	}
 
@@ -136,8 +127,7 @@ class StagTools {
 	 * @return void
 	 */
 	function stag_add_options_page() {
-		global $stag_options;
-		$stag_options = add_options_page('StagTools Options', 'StagTools', 'manage_options', 'stagtools', array($this, 'settings_page') );
+		add_options_page( __( 'StagTools Options', 'stag' ), __( 'StagTools', 'stag' ), 'manage_options', 'stagtools', 'stagtools_options_page' );
 	}
 
 	/**
@@ -146,7 +136,28 @@ class StagTools {
 	 * @return void
 	 */
 	function stag_load_textdomain() {
-		load_plugin_textdomain( 'stag', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		// Set filter for plugin's languages directory
+		$stagtools_lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+		$stagtools_lang_dir = apply_filters( 'stagtools_languages_directory', $stagtools_lang_dir );
+
+		// Traditional WordPress plugin locale filter
+		$locale        = apply_filters( 'plugin_locale',  get_locale(), 'stag' );
+		$mofile        = sprintf( '%1$s-%2$s.mo', 'stag', $locale );
+
+		// Setup paths to current locale file
+		$mofile_local  = $stagtools_lang_dir . $mofile;
+		$mofile_global = WP_LANG_DIR . '/stagtools/' . $mofile;
+
+		if ( file_exists( $mofile_global ) ) {
+			// Look in global /wp-content/languages/stagtools folder
+			load_textdomain( 'stag', $mofile_global );
+		} elseif ( file_exists( $mofile_local ) ) {
+			// Look in local /wp-content/plugins/stagtools/languages/ folder
+			load_textdomain( 'stag', $mofile_local );
+		} else {
+			// Load the default language files
+			load_plugin_textdomain( 'stag', false, $stagtools_lang_dir );
+		}
 	}
 
 	/**
@@ -157,6 +168,11 @@ class StagTools {
 	 * @return void
 	 */
 	public function includes() {
+		global $stag_options;
+
+		require_once('settings/settings.php');
+		$stag_options = stagtools_get_settings();
+
 		if ( is_admin() ){
 			$this->admin_includes();
 		}
@@ -167,6 +183,7 @@ class StagTools {
 		// Widgets
 		include_once( 'widgets/widget-dribbble.php' );
 		include_once( 'widgets/widget-flickr.php' );
+		include_once( 'widgets/widget-instagram.php' );
 		include_once( 'widgets/widget-twitter.php' );
 	}
 
@@ -177,6 +194,7 @@ class StagTools {
 	*/
 	public function admin_includes(){
 		include_once( 'shortcodes/stag-shortcodes.php' );
+		include_once( 'settings/settings.php' );
 	}
 
 	/**
@@ -195,15 +213,13 @@ class StagTools {
 	 */
 	public function frontend_style() {
 		wp_register_style( 'stag-shortcode-styles', plugin_dir_url( __FILE__ )  . 'assets/css/stag-shortcodes.css' , '', $this->version, 'all' );
-		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ )  . 'assets/css/font-awesome.css' , '', '3.2.1', 'all' );
+		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ )  . 'assets/css/font-awesome.css' , '', '4.0.3', 'all' );
 
 		wp_register_script( 'stag-shortcode-scripts', plugin_dir_url( __FILE__ ) . 'assets/js/stag-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
 
 		wp_enqueue_style( 'stag-shortcode-styles' );
 		wp_enqueue_style( 'font-awesome' );
-
-		wp_enqueue_script( 'jquery-ui-accordion' );
-		wp_enqueue_script( 'jquery-ui-tabs' );
+		
 		wp_enqueue_script( 'stag-shortcode-scripts' );
 	}
 
@@ -229,7 +245,7 @@ class StagTools {
 	}
 
 	/**
-	 * Add stagtools to body class for use on frontend to check if plugin is active.
+	 * Add stagtools to body class for use on frontend.
 	 * 
 	 * @since 1.0.0
 	 * @return array $classes List of classes
@@ -240,110 +256,16 @@ class StagTools {
 	}
 
 	/**
-	 * Validate admin option settings.
+	 * Widget styles.
 	 * 
-	 * @param  array $input Array containing admin options before saving them
-	 * @return array $input Filtered admin options
+	 * @return void
 	 */
-	public function stag_validate_options( $input ) {
-		return $input;
-	}
-
-	/**
-	* StagTools Settings Page.
-	*
-	* @return void
-	*/
-	public function settings_page(){
-	?>
-
-		<div class="wrap">
-			<?php echo screen_icon('tools'); ?>
-			<h2><?php _e( 'StagTools', 'okay' ); ?></h2>
-			
-			<form method="post" action="options.php">
-				<?php settings_fields('stag_plugin_options'); ?>
-				<?php $stag_options = get_option('stag_options'); ?>
-
-				<h3 class="title"><?php _e( 'Twitter Settings', 'stag' ); ?></h3>
-				
-				<table class="form-table">
-					<tbody>
-
-						<tr valign="top">
-							<th scope="row"><label for="twitter-api-consumer-key"><?php _e( 'OAuth Consumer Key', 'stag' ); ?></label></th>
-							<td>
-								<input type="text" class="regular-text" name="stag_options[consumer_key]" id="twitter-api-consumer-key" value="<?php echo esc_html($stag_options['consumer_key']); ?>" />
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="twitter-api-consumer-secret"><?php _e( 'OAuth Consumer Secret', 'stag' ); ?></label></th>
-							<td>
-								<input type="text" class="regular-text" name="stag_options[consumer_secret]" id="twitter-api-consumer-secret" value="<?php echo esc_html($stag_options['consumer_secret']); ?>" />
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="twitter-api-access-key"><?php _e( 'OAuth Access Token', 'stag' ); ?></label></th>
-							<td>
-								<input type="text" class="regular-text" name="stag_options[access_key]" id="twitter-api-access-key" value="<?php echo esc_html($stag_options['access_key']); ?>" />
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="twitter-api-access-secret"><?php _e( 'OAuth Access Secret', 'stag' ); ?></label></th>
-							<td>
-								<input type="text" class="regular-text" name="stag_options[access_secret]" id="twitter-api-access-secret" value="<?php echo esc_html($stag_options['access_secret']); ?>" />
-							</td>
-						</tr>
-
-					</tbody>
-				</table>
-
-				<h3><?php _e( 'Portfolio Settings', 'stag' ); ?></h3>
-				
-				<table class="form-table">
-					<tbody>
-
-						<tr valign="top">
-							<th scope="row"><label for="portfolio-slug"><?php _e( 'Portfolio Slug', 'stag' ); ?></label></th>
-							<td>
-								<?php $portfolio_slug = ( isset( $stag_options['portfolio_slug'] ) ) ? esc_html($stag_options['portfolio_slug']) : 'portfolio'; ?>
-								<input type="text" class="regular-text" name="stag_options[portfolio_slug]" id="portfolio-slug" value="<?php echo $portfolio_slug; ?>" />
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="skills-slug"><?php _e( 'Skills Slug', 'stag' ); ?></label></th>
-							<td>
-								<?php $skills_slug = ( isset( $stag_options['skills_slug'] ) ) ? esc_html($stag_options['skills_slug']) : 'skill'; ?>
-								<input type="text" class="regular-text" name="stag_options[skills_slug]" id="skills-slug" value="<?php echo $skills_slug; ?>" />
-							</td>
-						</tr>
-
-					</tbody>
-				</table>
-
-				<?php echo submit_button('Save Changes'); ?>
-			</form>
-		</div><!-- .wrap -->
-
-	<?php
-	}
-
-	/**
-	* Widget styles.
-	* 
-	* @access public 
-	* @return void 
-	*/
 	public function widget_styles() {
 		global $pagenow;
 		if( $pagenow != 'widgets.php' ) return;
 		?>
 		<style type="text/css">
-		div[id*="stag"] .widget-top{
+		div[id*="_stag"] .widget-top{
 		  background: #C8E5F3 !important;
 		  border-color: #B4D0DD !important;
 		  box-shadow: inset 0 1px 0 white !important;
@@ -366,7 +288,7 @@ class StagTools {
 	 *
 	 * @since 1.1
 	 * @link http://wordpress.org/plugins/stag-custom-sidebars
-	 * @return boolean
+	 * @return boolean True if plugin is active or false.
 	 */
 	public function is_scs_active(){
 		include_once(ABSPATH .'wp-admin/includes/plugin.php');
@@ -409,12 +331,25 @@ class StagTools {
 							'<p>' . sprintf( __( 'Yes; although we have a shortcode builder you can also see a list of <a href="%s" target="_blank">all available shortcodes</a> and use it manually in any supported area.', 'stag' ), esc_url( 'http://gist.github.com/mauryaratan/6071262' ) ) . '</p>'
 		) );
 
+		if ( current_theme_supports( 'post-type',  array( 'portfolio' ) ) ) :
 		$screen->add_help_tab( array(
 			'id'	    => 'stagtools-help-portfolio',
 			'title'	    => __( 'Portfolio Settings', 'stag' ),
 			'content'	=>  '<p>'. __( 'You can use the following settigns to control the slug/taxonomies for custom post type portfolio and skills.', 'stag' ) .'</p>'.
 							'<p>'. __( '<strong>Portfolio Slug</strong> - This settings is used to set the slug of custom post type &lsquo;portfolio&rsquo;.', 'stag' ) .'</p>'.
 							'<p>'. __( '<strong>Skills Slug</strong> - This settings is used to set the slug of custom post taxonomy &lsquo;skill&rsquo;.', 'stag' ) .'</p>'
+		) );
+		endif;
+
+		$screen->add_help_tab( array(
+			'id'	    => 'stagtools-help-social',
+			'title'	    => __( 'Using Social Icons', 'stag' ),
+			'content'	=>  '<h5>'. __( 'Using Social Icons Shortcode' ) .'</h5>'.
+							'<p>' . __( 'To use the social icon use the following shortcode:', 'stag' ) . '</p>'.
+							'<pre>[stag_social id="all"] // '. __( 'passing "all" in id would display all social icons with filled settings.', 'stag' ) .'</pre>'.
+							'<pre>[stag_social id="facebook,twitter,google-plus"] // '. __( 'or you can pass specific ids.', 'stag' ) .'</pre>'.
+							'<h5>'. __( 'Using Different Styled Icons' ) .'</h5>'.
+							'<p>'. __( 'You can use the social icons in two different styles: normal and square. Just pass the <code>style</code> argument in sidebar.<br>E.g.: <code>[stag_social id="twitter,facebook" style="square"]</code>.' ) .'</p>'
 		) );
 
 		return $contextual_help;
