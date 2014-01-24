@@ -5,7 +5,7 @@ Donate link: http://codest.ag/st-donate
 Tags: widget, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebar, social, social media, maps, flickr, instagram, custom post type, codestag, mauryaratan, twitter
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,19 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 
 == Changelog ==
 
+= 1.2.1 - 01/25/2014 =
+* Tweak: Performance tweaks for Google Maps
+* Tweak: Twitter widget, fixed an issue with page break when tweets are not retrieved
+* Tweak: Added custom post type menu positions and icons
+* Tweak: Disable scroll wheel zoom on Google Map
+* Tweak: Add default options for portfolio and skills slugs
+* Improved - Added inline docs for Portfolio post type
+* Improved - Make skill terms filter portfolio items based on skills when clicked
+* Fix - Added missing zoom parameter in Google Maps shortcode
+* Fix - Custom post type's visibilities
+* Fix - Add *google-map* class on Google maps shortcode
+* Fix - Fix Team post type title
+
 = 1.2 - 01/09/2014 =
 * New - Settings Page UI
 * New - Instagram Widget
@@ -156,3 +169,6 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 * Initial Release
 
 == Upgrade Notice ==
+
+= 1.2 =
+This update requires update to all Google Map shortcodes.

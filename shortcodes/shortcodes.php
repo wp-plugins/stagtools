@@ -401,45 +401,29 @@ function stag_map( $atts ) {
 	);
 
 	$map_id = 'map'. rand(0, 99);
+
+	wp_enqueue_script( 'google-maps', ( is_ssl() ? 'https' : 'http' ) . '://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' );
   	
 	?>
 	
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
-	
 	<script type="text/javascript">
-	    // When the window has finished loading create our google map below
-	    google.maps.event.addDomListener(window, 'load', init);
-	
-	    function init() {
-
-	    	var userLatLang = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long; ?>);
-
-	    	var mapStyle = <?php echo $map_styles[$style]; ?>;
-
-	        // Basic options for a simple Google Map
-	        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-	        var mapOptions = {
-	            zoom: <?php echo $zoom; ?>,
-	            center: userLatLang,
-	            styles: mapStyle
-	        };
-
-	        var mapElement = document.getElementById('<?php echo $map_id; ?>');
-	        
-	        var map = new google.maps.Map(mapElement, mapOptions);
-
-			var marker = new google.maps.Marker({
-				position: userLatLang,
-				map: map
-			});
-	    }
+	    jQuery(window).load(function(){
+    	    var options = {
+    	    	id: "<?php echo $map_id; ?>",
+    	    	styles: <?php echo $map_styles[$style]; ?>,
+    	    	zoom: <?php echo $zoom; ?>,
+    	    	center: {
+    	    		lat: "<?php echo $lat; ?>",
+    	    		long: "<?php echo $long; ?>"
+    	    	}
+    	    };
+    	    Stagtools.Map.init(options);
+	    });
 	</script>
-
-	<style type="text/css"> .gm-style img { max-width: none; } </style>
 
 	<?php
 
-	return "<div id='{$map_id}' style='width:{$width};height:{$height};'></div>";
+	return "<div id='{$map_id}' class='google-map' style='width:{$width};height:{$height};'></div>";
 }
 add_shortcode( 'stag_map', 'stag_map' );
 endif;
