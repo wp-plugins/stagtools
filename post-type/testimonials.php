@@ -16,15 +16,16 @@ $labels = array(
 
 $args = array(
 	'labels'              => $labels,
-	'public'              => true,
+	'public'              => false,
 	'exclude_from_search' => true,
-	'publicly_queryable'  => true,
-	'rewrite'             => array('slug' => 'testimonials'),
+	'publicly_queryable'  => false,
+	'rewrite'             => array( 'slug' => 'testimonials' ),
 	'show_ui'             => true,
 	'query_var'           => true,
 	'capability_type'     => 'post',
 	'hierarchical'        => false,
-	'menu_position'       => null,
+	'menu_position'       => 35,
+	'menu_icon'           => 'dashicons-format-chat',
 	'has_archive'         => false,
 	'supports'            => array( 'title', 'editor' )
 );
@@ -40,4 +41,4 @@ function stag_testimonials_edit_columns( $columns ) {
 	return $columns;
 }
 
-add_filter('manage_edit-team_columns', 'stag_testimonials_edit_columns');
+add_filter('manage_edit-testimonials_columns', 'stag_testimonials_edit_columns');

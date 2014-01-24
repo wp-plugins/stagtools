@@ -16,15 +16,16 @@ $labels = array(
 
 $args = array(
 	'labels'              => $labels,
-	'public'              => true,
+	'public'              => false,
 	'exclude_from_search' => true,
-	'publicly_queryable'  => true,
+	'publicly_queryable'  => false,
 	'rewrite'             => array('slug' => 'team'),
 	'show_ui'             => true,
 	'query_var'           => true,
 	'capability_type'     => 'post',
 	'hierarchical'        => false,
-	'menu_position'       => null,
+	'menu_position'       => 34,
+	'menu_icon'           => 'dashicons-groups',
 	'has_archive'         => false,
 	'supports'            => array( 'title', 'thumbnail' )
 );

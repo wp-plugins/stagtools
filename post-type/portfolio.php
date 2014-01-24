@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Portfolio post type functions.
+ * 
+ * @package StagTools
+ */
 $portfolio_labels = apply_filters( 'stag_portfolio_labels', array(
 	'name'               => __( 'Portfolio', 'stag' ),
 	'singular_name'      => __( 'Portfolio', 'stag' ),
@@ -25,6 +29,8 @@ $portfolio_args = array(
 	'show_ui'           => true,
 	'show_in_menu'      => true,
 	'show_in_nav_menus' => false,
+	'menu_position'     => 32,
+	'menu_icon'         => 'dashicons-portfolio',
 	'rewrite'           => $rewrite,
 	'supports'          => apply_filters( 'stag_portfolio_supports', array( 'title', 'editor', 'thumbnail', 'revisions' ) ),
 	'taxonomies'        => array( 'skill' )
@@ -38,30 +44,49 @@ register_taxonomy( 'skill', 'portfolio', array(
 	'public'            => true,
 	'hierarchical'      => true,
 	'show_ui'           => true,
-	'show_in_nav_menus' => false,
+	'show_in_nav_menus' => true,
 	'args'              => array( 'orderby' => 'term_order' ),
 	'query_var'         => true,
 	'rewrite'           => array( 'slug' => $skills_slug, 'hierarchical' => true)
 ) );
 
+/**
+ * Modify Portfolio columns
+ *
+ * @param  array $old_columns Old columns
+ * @return $columns Return new columns
+ */
 function stag_portfolio_edit_columns( $columns ) {
 	$columns = array(
-		"cb" => "<input type=\"checkbox\">",
+		"cb"    => "<input type=\"checkbox\">",
 		"title" => __( 'Portfolio Title', 'stag' ),
-		"type" => __( 'Skills', 'stag' ),
-		"date" => __( 'Date', 'stag' )
+		"skill" => __( 'Skills', 'stag' ),
+		"date"  => __( 'Date', 'stag' )
 	);
 	return $columns;
 }
+add_filter("manage_edit-portfolio_columns", "stag_portfolio_edit_columns");
 
-function stag_portfolio_custom_column( $columns ) {
+/**
+ * Custom post type Portfolio column.
+ *
+ * @param array $column
+ * @return void
+ */
+function stag_portfolio_custom_column( $column ) {
 	global $post;
-	switch ($columns){
-		case 'type':
-		echo get_the_term_list($post->ID, 'skill', '', ', ','');
+	switch ( $column ) {
+		case 'skill':
+			if ( ! $terms = get_the_terms( $post->ID, $column ) ) {
+				echo '<span class="na">&mdash;</span>';
+			} else {
+				foreach ( $terms as $term ) {
+					$termlist[] = '<a href="' . esc_url( add_query_arg( $column, $term->slug, admin_url( 'edit.php?post_type=portfolio' ) ) ) . ' ">' . ucfirst( $term->name ) . '</a>';
+				}
+
+				echo implode( ', ', $termlist );
+			}
 		break;
 	}
 }
-
-add_filter("manage_edit-portfolio_columns", "stag_portfolio_edit_columns");
 add_action("manage_posts_custom_column",  "stag_portfolio_custom_column");

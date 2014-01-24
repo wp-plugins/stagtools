@@ -1,11 +1,11 @@
 === StagTools ===
 
-Contributors: mauryaratan
+Contributors: codestag, mauryaratan
 Donate link: http://codest.ag/st-donate
-Tags: widgets, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebars, codestag, mauryaratan
+Tags: widget, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebar, social, social media, maps, flickr, instagram, custom post type, codestag, mauryaratan, twitter
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 1.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,9 +15,23 @@ StagTools is a powerful plugin to extend functionality to your WordPress themes 
 
 StagTools powers your WordPress website with some regularly needed shortcodes including buttons, columns, alerts, font icons etc. It also includes several widgets and custom post types (only for Codestag Themes).
 
-**Shortcodes:** Alerts, Buttons, Columns, Divider / Horizontal Ruler, Dropcaps, Intro Text, Tabs, Toggle, Font Icons by [Font Awesome](http://fortawesome.github.io/Font-Awesome/), Image with CSS3 filters, Videos ( supports [oEmbeds](http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F) )
+**Shortcodes:**
 
-**Widgets:** Twitter, Dribbble, Flickr
+* Alerts
+* Buttons ( optionally, with font icons )
+* Columns
+* Divider / Horizontal Ruler
+* Dropcaps
+* Intro Text
+* Tabs
+* Toggle
+* Font Icons by [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+* Google Maps with 5 predefined styles
+* Custom Sidebars Area ( requires [Stag Custom Sidebars](http://wordpress.org/plugins/stag-custom-sidebars/) plugin )
+* Image with CSS3 filters
+* Videos ( supports [oEmbeds](http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F) )
+
+**Widgets:** Twitter, Dribbble, Flickr, Instagram
 
 **Custom Post Types:** Portfolio, Slides, Team, Testimonials
 
@@ -53,7 +67,7 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 2. All widgets added by StagTools are highlighted.
 3. Settings panel for adding twitter oAuth keys.
 
-==Installation==
+== Installation ==
 
 = Minimum Requirements =
 
@@ -64,33 +78,63 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 = Automatic Installation =
 
 1. Log in and navigate to Plugins &rarr; Add New.
-2. Type "StagTools" into the Search input and click the "Search Widgets" button.
-3. Locate the StagTools in the list of search results and click "Install Now".
-4. Click the "Activate Plugin" link at the bottom of the install screen.
-5. Navigate to Settings &rarr; StagTools to modify the plugin's settings. The widgets will be available in Appearance &rarr; Widgets.
+2. Type “StagTools” into the Search input and click the “Search Widgets” button.
+3. Locate the “StagTools” in the list of search results and click “Install Now”.
+4. Click the “Activate Plugin” link at the bottom of the install screen.
+5. Navigate to Settings &rarr; StagTools to modify the plugin’s settings. The widgets will be available in Appearance &rarr; Widgets.
 
 = Manual Installation =
 
-1. Download the "StagTools" plugin from WordPress.org.
+1. Download the “StagTools” plugin from WordPress.org.
 2. Unzip the package and move to your plugins directory.
-3. Log into WordPress and navigate to the "Plugins" screen.
-4. Locate "StagTools" in the list and click the "Activate" link.
+3. Log into WordPress and navigate to the “Plugins” screen.
+4. Locate “StagTools” in the list and click the “Activate” link.
 5. Navigate to Settings &rarr; StagTools to learn about the plugin's features. The widgets will be available in Appearance &rarr; Widgets.
 
-==Changelog==
+== Changelog ==
+
+= 1.2.1 - 01/25/2014 =
+* Tweak: Performance tweaks for Google Maps
+* Tweak: Twitter widget, fixed an issue with page break when tweets are not retrieved
+* Tweak: Added custom post type menu positions and icons
+* Tweak: Disable scroll wheel zoom on Google Map
+* Tweak: Add default options for portfolio and skills slugs
+* Improved - Added inline docs for Portfolio post type
+* Improved - Make skill terms filter portfolio items based on skills when clicked
+* Fix - Added missing zoom parameter in Google Maps shortcode
+* Fix - Custom post type's visibilities
+* Fix - Add *google-map* class on Google maps shortcode
+* Fix - Fix Team post type title
+
+= 1.2 - 01/09/2014 =
+* New - Settings Page UI
+* New - Instagram Widget
+* New - Social Icons Shortcode
+* Fix - Flush rewrite rules on saving settings, when required
+* Fix - Make StagTools shortcode window insert content in active editor instead of main editor
+* Tweak - Use ``add_theme_support( 'post-type', array( 'portfolio' ) )`` instead of separate theme support check. Where ``portfolio`` is the custom post type
+* Tweak - Google Maps Shortcode. Now accepts ``lat``, ``long``, ``width``, ``height``, ``zoom``, ``style`` as arguments
+* Tweak - Added optional follow button in twitter widget
+* Tweak - Inline documentation
+* Tweak - Dribbble shot markup
+* Tweak - Backwards compatbility for Portfolio settings
+* Tweak - Replace help under settings tab with Contextual help
+* And several bug fixes, documentation enhancement and improvements
+
+= 1.1.1 - 11/20/2013 =
+* Fix - FontAwesome icon missing class names after upgrading to latest version
 
 = 1.1 - 11/15/2013 =
 * New - Compatibility with FontAwesome 4
-* New - Insert font icons in buttons
 * New - Insert font icons in buttons
 * New - Settings for changing slugs for custom post type ‘portfolio’ and taxonomy ‘skill’
 * New - Contextual help screen on settings page
 * Fix - Properly resize shortcode modal window width
 * Fix - Image/Video Media frame title
 * Fix - Check if there are no sidebar created via Stag Custom Sidebars
-* Improve - Compatibility with the plugin [Stag Custom Sidebars][http://wordpress.org/plugins/stag-custom-sidebars/]
-* Improve - Refractored code
-* Improve - Inline plugin documentation
+* Tweak - Compatibility with the plugin [Stag Custom Sidebars](http://wordpress.org/plugins/stag-custom-sidebars/)
+* Tweak - Refractored code
+* Tweak - Inline plugin documentation
 
 = 1.0.8 - 10/02/2013 =
 * Fix - Twitter widget incorrect links
@@ -100,7 +144,7 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 * Fix - Disable Portfolio Archives
 
 = 1.0.6 - 09/11/2013 =
-* New - [Modify Portfolio post type label, slug and rewrites](https://github.com/mauryaratan/stagtools/wiki/Constants-and-Filters)
+* New - Modify Portfolio post type label, slug and rewrites
 * New - Attach ``stagtools`` body class to frontend
 * Fix - Frontend shortcode stylesheet on the top of theme stylesheet
 * Fix - Minor issues with intro and button shortcode styling
@@ -125,3 +169,6 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 * Initial Release
 
 == Upgrade Notice ==
+
+= 1.2 =
+This update requires update to all Google Map shortcodes.
