@@ -3,13 +3,13 @@
  * Plugin Name: StagTools
  * Plugin URI: http://wordpress.org/plugins/stagtools/
  * Description: A poweful plugin to extend functionality to your WordPress themes offering shortcodes, font icons and useful widgets.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
  * License: GPL2
  * Requires at least: 3.5
  * Tested up to: 3.8
- * 
+ *
  * Text Domain: stag
  * Domain Path: /languages/
 */
@@ -22,7 +22,7 @@ if ( ! class_exists( 'StagTools' ) ) {
  * Main StagTools Class
  *
  * @package StagTools
- * @version 1.2.1
+ * @version 1.2.2
  * @author Ram Ratan Maurya (Codestag)
  * @link http://mauryaratan.me
  * @link http://codestag.com
@@ -33,18 +33,18 @@ class StagTools {
 	/**
 	* @var string
 	*/
-	public $version = '1.2.1';
-	
+	public $version = '1.2.2';
+
 	/**
 	* @var string
 	*/
 	public $plugin_url;
-	
+
 	/**
 	* @var string
 	*/
 	public $plugin_path;
-	
+
 	/**
 	* @var string
 	*/
@@ -87,7 +87,7 @@ class StagTools {
 
 	/**
 	 * Initiate all the stuff.
-	 * 
+	 *
 	 * @return void
 	 */
 	function init() {
@@ -101,21 +101,21 @@ class StagTools {
 		/**
 		 * @deprecated 1.2
 		 */
-		if( current_theme_supports( 'stag-portfolio' ) ) 	include_once( 'post-type/portfolio.php' );
-		if( current_theme_supports( 'stag-slides' ) ) 		include_once( 'post-type/slides.php' );
-		if( current_theme_supports( 'stag-team' ) ) 		include_once( 'post-type/team.php' );
-		if( current_theme_supports( 'stag-testimonials' ) ) include_once( 'post-type/testimonials.php' );
-		
+		if( current_theme_supports( 'stag-portfolio' ) ) 	include_once( 'includes/post-type/portfolio.php' );
+		if( current_theme_supports( 'stag-slides' ) ) 		include_once( 'includes/post-type/slides.php' );
+		if( current_theme_supports( 'stag-team' ) ) 		include_once( 'includes/post-type/team.php' );
+		if( current_theme_supports( 'stag-testimonials' ) ) include_once( 'includes/post-type/testimonials.php' );
+
 		/**
 		 * Include custom post type files, depending on which are supported.
-		 * 
+		 *
 		 * @since 1.2
 		 */
 		if ( current_theme_supports( 'post-type' ) ) {
 			$theme_supports = get_theme_support( 'post-type' );
 
 			foreach ( $theme_supports[0] as $support ) {
-				include_once( "post-type/{$support}.php" );
+				include_once( "includes/post-type/{$support}.php" );
 			}
 		}
 	}
@@ -132,7 +132,7 @@ class StagTools {
 
 	/**
 	 * Setup localisation.
-	 * 
+	 *
 	 * @return void
 	 */
 	function stag_load_textdomain() {
@@ -170,7 +170,7 @@ class StagTools {
 	public function includes() {
 		global $stag_options;
 
-		require_once('settings/settings.php');
+		require_once('includes/settings/settings.php');
 		$stag_options = stagtools_get_settings();
 
 		if ( is_admin() ){
@@ -178,13 +178,13 @@ class StagTools {
 		}
 		if( !is_admin() ){
 			$this->frontend_includes();
-		}		
+		}
 
 		// Widgets
-		include_once( 'widgets/widget-dribbble.php' );
-		include_once( 'widgets/widget-flickr.php' );
-		include_once( 'widgets/widget-instagram.php' );
-		include_once( 'widgets/widget-twitter.php' );
+		include_once( 'includes/widgets/widget-dribbble.php' );
+		include_once( 'includes/widgets/widget-flickr.php' );
+		include_once( 'includes/widgets/widget-instagram.php' );
+		include_once( 'includes/widgets/widget-twitter.php' );
 	}
 
 	/**
@@ -194,12 +194,12 @@ class StagTools {
 	*/
 	public function admin_includes(){
 		include_once( 'shortcodes/stag-shortcodes.php' );
-		include_once( 'settings/settings.php' );
+		include_once( 'includes/settings/settings.php' );
 	}
 
 	/**
 	 * Include frontend files.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function frontend_includes(){
@@ -208,7 +208,7 @@ class StagTools {
 
 	/**
 	 * Add frontend scripts and styles.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function frontend_style() {
@@ -219,13 +219,13 @@ class StagTools {
 
 		wp_enqueue_style( 'stag-shortcode-styles' );
 		wp_enqueue_style( 'font-awesome' );
-		
+
 		wp_enqueue_script( 'stag-shortcode-scripts' );
 	}
 
 	/**
 	 * Plugin path.
-	 * 
+	 *
 	 * @return string Plugin path
 	 */
 	public function plugin_path() {
@@ -236,7 +236,7 @@ class StagTools {
 
 	/**
 	 * Plugin url.
-	 * 
+	 *
 	 * @return string Plugin url
 	 */
 	public function plugin_url() {
@@ -246,7 +246,7 @@ class StagTools {
 
 	/**
 	 * Add stagtools to body class for use on frontend.
-	 * 
+	 *
 	 * @since 1.0.0
 	 * @return array $classes List of classes
 	 */
@@ -257,7 +257,7 @@ class StagTools {
 
 	/**
 	 * Widget styles.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function widget_styles() {
@@ -298,7 +298,7 @@ class StagTools {
 
 	/**
 	 * Add help screen for StagTools settings page.
-	 * 
+	 *
 	 * @param  string $contextual_help
 	 * @param  string $screen_id       String of the settings page
 	 * @param  object $screen          Current screen object containing all details
