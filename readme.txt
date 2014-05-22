@@ -4,8 +4,8 @@ Contributors: mauryaratan, codestag
 Donate link: http://codest.ag/st-donate
 Tags: widget, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebar, social, social media, maps, flickr, instagram, custom post type, codestag, mauryaratan, twitter
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.2.3
+Tested up to: 4.0
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,16 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 5. Navigate to Settings &rarr; StagTools to learn about the plugin's features. The widgets will be available in Appearance &rarr; Widgets.
 
 == Changelog ==
+
+= 1.2.4 - May 22, 2014 =
+* New - ``[stag_column]`` shortcode for wrapping the columns
+* New - Added ``stag-section`` class to all block level shortcodes
+* New - Custom post type "Project" added, better version of portfolios
+* Fix - Minor issue with popup modal not resizing properly
+* Tweak - Enqeueu FontAwesome stylesheet before StagTools' shortcode styles
+* Update - FontAwesome icons updated to v4.1.0, includes 71 new icons
+* Improved - FontAwesome icons now use default FontAwesome classes instead of custom
+* Improved - Removed redundant code
 
 = 1.2.3 - April 16, 2014 =
 * New - Added Compatibility with WordPress 3.9
