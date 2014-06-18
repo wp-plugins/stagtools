@@ -5,7 +5,7 @@ Donate link: http://codest.ag/st-donate
 Tags: widget, icons, retina, shortcodes, themeforest, font-icons, fontawesome, sidebar, social, social media, maps, flickr, instagram, custom post type, codestag, mauryaratan, twitter
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,12 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 5. Navigate to Settings &rarr; StagTools to learn about the plugin's features. The widgets will be available in Appearance &rarr; Widgets.
 
 == Changelog ==
+
+= 1.2.5 - June 18, 2014 =
+* Fix - Twitter widget option storage, works flawlessly
+* Fix - Instagram widget image size styles
+* Fix - Properly sanitize Instagram username
+* Improved - Instagram widget now grabs video thumbnails too
 
 = 1.2.4 - May 22, 2014 =
 * New - ``[stag_column]`` shortcode for wrapping the columns
@@ -191,6 +197,9 @@ Yes you can! Join me on [Github Repository](https://github.com/mauryaratan/stagt
 * Initial Release
 
 == Upgrade Notice ==
+= 1.2.5 =
+Includes fixes and improvements for Twitter and Instagram widget.
+
 = 1.2.3 =
 Adds compatbility with WordPress 3.9. 1 beta tester was killed during this update.
 
