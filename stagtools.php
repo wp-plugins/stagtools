@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: StagTools
- * Plugin URI: http://wordpress.org/plugins/stagtools/
+ * Plugin URI: https://wordpress.org/plugins/stagtools/
  * Description: A poweful plugin to extend functionality to your WordPress themes offering shortcodes, font icons and useful widgets.
- * Version: 1.2.2
+ * Version: 1.2.5
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
  * License: GPL2
  * Requires at least: 3.5
- * Tested up to: 3.8
+ * Tested up to: 4.0
  *
  * Text Domain: stag
  * Domain Path: /languages/
@@ -22,7 +22,7 @@ if ( ! class_exists( 'StagTools' ) ) {
  * Main StagTools Class
  *
  * @package StagTools
- * @version 1.2.2
+ * @version 1.2.5
  * @author Ram Ratan Maurya (Codestag)
  * @link http://mauryaratan.me
  * @link http://codestag.com
@@ -33,7 +33,7 @@ class StagTools {
 	/**
 	* @var string
 	*/
-	public $version = '1.2.2';
+	public $version = '1.2.5';
 
 	/**
 	* @var string
@@ -212,14 +212,13 @@ class StagTools {
 	 * @return void
 	 */
 	public function frontend_style() {
-		wp_register_style( 'stag-shortcode-styles', plugin_dir_url( __FILE__ )  . 'assets/css/stag-shortcodes.css' , '', $this->version, 'all' );
-		wp_register_style( 'font-awesome', plugin_dir_url( __FILE__ )  . 'assets/css/font-awesome.css' , '', '4.0.3', 'all' );
+		wp_register_style( 'font-awesome', $this->plugin_url() . '/assets/css/font-awesome.css' , '', '4.1.0', 'all' );
+		wp_register_style( 'stag-shortcode-styles', $this->plugin_url() . '/assets/css/stag-shortcodes.css' , array( 'font-awesome' ), $this->version, 'all' );
 
-		wp_register_script( 'stag-shortcode-scripts', plugin_dir_url( __FILE__ ) . 'assets/js/stag-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
-
-		wp_enqueue_style( 'stag-shortcode-styles' );
 		wp_enqueue_style( 'font-awesome' );
+		wp_enqueue_style( 'stag-shortcode-styles' );
 
+		wp_register_script( 'stag-shortcode-scripts', $this->plugin_url(). '/assets/js/stag-shortcode-scripts.js', array( 'jquery', 'jquery-ui-accordion', 'jquery-ui-tabs' ), $this->version, true );
 		wp_enqueue_script( 'stag-shortcode-scripts' );
 	}
 
@@ -292,7 +291,17 @@ class StagTools {
 	 */
 	public function is_scs_active(){
 		include_once(ABSPATH .'wp-admin/includes/plugin.php');
-		if( is_plugin_active('stag-custom-sidebars/stag-custom-sidebars.php') ) return true;
+
+		$is_scs_active = ( is_plugin_active('stag-custom-sidebars/stag-custom-sidebars.php') ) ? true : false;
+
+		if( $is_scs_active ) {
+			$custom_sidebars = get_option( 'stag_custom_sidebars' );
+
+			if( $custom_sidebars && count($custom_sidebars) ) {
+				return true;
+			}
+		}
+
 		return false;
 	}
 
@@ -346,7 +355,7 @@ class StagTools {
 			'title'	    => __( 'Using Social Icons', 'stag' ),
 			'content'	=>  '<h5>'. __( 'Using Social Icons Shortcode' ) .'</h5>'.
 							'<p>' . __( 'To use the social icon use the following shortcode:', 'stag' ) . '</p>'.
-							'<pre>[stag_social id="all"] // '. __( 'passing "all" in id would display all social icons with filled settings.', 'stag' ) .'</pre>'.
+							'<pre>[stag_social] // '. __( 'It would display all social icons with non-empty profile URLs.', 'stag' ) .'</pre>'.
 							'<pre>[stag_social id="facebook,twitter,google-plus"] // '. __( 'or you can pass specific ids.', 'stag' ) .'</pre>'.
 							'<h5>'. __( 'Using Different Styled Icons' ) .'</h5>'.
 							'<p>'. __( 'You can use the social icons in two different styles: normal and square. Just pass the <code>style</code> argument in sidebar.<br>E.g.: <code>[stag_social id="twitter,facebook" style="square"]</code>.' ) .'</p>'
